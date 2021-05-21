@@ -25,12 +25,16 @@ SECRET_KEY = 'django-insecure-i*+=y&6tkxy=dttstzv^i64_irzx0m*ekjkepgcxn(q322s@9k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '45e9101f0df2.ngrok.io',
+    '127.0.0.1',
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'shop.apps.ShopConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
