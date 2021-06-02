@@ -4,8 +4,10 @@ from .models import Mahsulot, Toifa
 
 
 def index(request):
-    mahsulotlar = Mahsulot.objects.all()
-    return render(request, 'shop/index.html', {'mahsulotlar': mahsulotlar})
+    toifa = Toifa.objects.get(pk=1)
+    mahsulotlar = Mahsulot.objects.filter(toifasi=toifa)
+    toifalar = Toifa.objects.all()
+    return render(request, 'shop/index.html', {'toifalar': toifalar, 'mahsulotlar': mahsulotlar})
 
 
 def testoviy(request):
