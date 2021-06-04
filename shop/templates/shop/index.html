@@ -131,14 +131,18 @@
       </div>
     </div>
   </nav>
-<div class="row">
+
+
+ <div class="row">
   <div class="col-2 menu">
     <ul>
         {% for toifa in toifalar %}
-            <li>{{ toifa.nomi }}</li>
+        <li><a href="{% url 'category' toifa.id %}">{{ toifa.nomi }}</a></li>
         {% endfor %}
     </ul>
   </div>
+
+
 
   <div class="col-8">
       <div class="row">
@@ -166,35 +170,62 @@
 
       </div>
       <br>
-      <div class="row">
-          <div class="card col" style=" ">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-info">Go somewhere</a>
-                  </div>
-          </div>
-          <div class="card col" style=" ">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-info">Go somewhere</a>
-                  </div>
-          </div>
-          <div class="card col" style=" ">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-info">Go somewhere</a>
-                  </div>
-          </div>
+<!--      <div class="row">-->
+<!--          <div class="card col" style=" ">-->
+<!--                  <img src="..." class="card-img-top" alt="...">-->
+<!--                  <div class="card-body">-->
+<!--                      <h5 class="card-title">Card title</h5>-->
+<!--                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+<!--                      <a href="#" class="btn btn-info">Go somewhere</a>-->
+<!--                  </div>-->
+<!--          </div>-->
+<!--          <div class="card col" style=" ">-->
+<!--                  <img src="..." class="card-img-top" alt="...">-->
+<!--                  <div class="card-body">-->
+<!--                      <h5 class="card-title">Card title</h5>-->
+<!--                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+<!--                      <a href="#" class="btn btn-info">Go somewhere</a>-->
+<!--                  </div>-->
+<!--          </div>-->
+<!--          <div class="card col" style=" ">-->
+<!--                  <img src="..." class="card-img-top" alt="...">-->
+<!--                  <div class="card-body">-->
+<!--                      <h5 class="card-title">Card title</h5>-->
+<!--                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+<!--                      <a href="#" class="btn btn-info">Go somewhere</a>-->
+<!--                  </div>-->
+<!--          </div>-->
       </div>
     </div>
   </div>
 <div class="row">
+
+     <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            {% if mahsulotlar.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ 1 }}" tabindex="-1" aria-disabled="true">1</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ mahsulotlar.previous_page_number }}" aria-disabled="true">Oldingi</a>
+            </li>
+            {% endif %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">{{ mahsulotlar.number }}</a>
+            </li>
+            <li class="page-item">
+                {% if mahsulotlar.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ mahsulotlar.next_page_number }}">Keyingi</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ mahsulotlar.paginator.num_pages }}">{{ mahsulotlar.paginator.num_pages }}</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+
 <footer class="bg-dark text-center text-white">
   <!-- Grid container -->
   <div class="container p-3 pb-0">
